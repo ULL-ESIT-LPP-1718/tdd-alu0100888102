@@ -21,5 +21,21 @@ describe Alimentos do
     end
   end
   
+  describe "Debe tener metodos para acceder a los datos" do
+    it "Debe poder accederse al nombre" do
+      expect(@al1.nombre).to eq("Huevo Frito") 
+    end
+   it "Debe poder accederse a las proteinas" do
+      expect(@al1.proteinas).to eq(14.5) 
+    end
+    it "Debe poder accederse a los glucidos" do
+      expect(@al1.glucidos).to eq(10.0) 
+    end
+    it "Debe poder accederse a los lipidos" do
+      expect(@al1.lipidos).to eq(19.5) 
+    end
+  
+  end
+  
   
 end
