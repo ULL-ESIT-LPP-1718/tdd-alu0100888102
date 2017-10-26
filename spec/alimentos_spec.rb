@@ -3,7 +3,7 @@ require "lib/alimentos"
 describe Alimentos do
   
   before :all do
-    @al1 = Alimentos.new("Huevo Frito", 14.5, 10.0, 19.5)
+    @al1 = Alimentos.new("Huevo Frito", 14.1, 10.0, 19.5)
   end
   
    describe "Debe almacenar los datos" do
@@ -26,7 +26,7 @@ describe Alimentos do
       expect(@al1.nombre).to eq("Huevo Frito") 
     end
    it "Debe poder accederse a las proteinas" do
-      expect(@al1.proteinas).to eq(14.5) 
+      expect(@al1.proteinas).to eq(14.1) 
     end
     it "Debe poder accederse a los glucidos" do
       expect(@al1.glucidos).to eq(10.0) 
@@ -34,7 +34,16 @@ describe Alimentos do
     it "Debe poder accederse a los lipidos" do
       expect(@al1.lipidos).to eq(19.5) 
     end
+  end
   
+  describe "Debe tener algunos métodos más complejos" do
+    it "Debe tener salida formateada a texto" do
+      string = "Huevo Frito:\n\tproteinas\t-> 14.5\n\tglucidos\t-> 10.0\n\tlipidos \t-> 19.5\n"
+      expect(@al1.to_s()).to eq(string)
+    end
+    it "Debe tener un metodo para obtener el valor energetico del alimento"do
+      expect(@al1.valorEnergetico()).to eq(14.5*4 + 10.0*4 + 19.5*9)
+    end
   end
   
   
