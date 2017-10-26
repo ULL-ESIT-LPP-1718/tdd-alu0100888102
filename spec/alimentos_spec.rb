@@ -38,11 +38,11 @@ describe Alimentos do
   
   describe "Debe tener algunos métodos más complejos" do
     it "Debe tener salida formateada a texto" do
-      string = "Huevo Frito:\n\tproteinas\t-> 14.5\n\tglucidos\t-> 10.0\n\tlipidos \t-> 19.5\n"
-      expect(@al1.to_s()).to eq(string)
+      string = "Huevo Frito:\n\tproteinas\t-> 14.1\n\tglucidos\t-> 10.0\n\tlipidos \t-> 19.5\n"
+      expect(@al1.to_s).to eq(string)
     end
     it "Debe tener un metodo para obtener el valor energetico del alimento"do
-      expect(@al1.valorEnergetico()).to eq(14.5*4 + 10.0*4 + 19.5*9)
+      expect(@al1.valorEnergetico).to eq(14.1*4 + 10.0*4 + 19.5*9)
     end
   end
   
