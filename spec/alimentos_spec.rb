@@ -1,18 +1,14 @@
-require "spec_helper"
+require "lib/alimentos"
 
-RSpec.describe Alimentos do
+describe Alimentos do
   
   before :all do
-    @al1 = alimentos.new()
-  end
-  
-  it "has a version number" do
-    expect(Alimentos::VERSION).not_to be nil
+    @al1 = Alimentos.new("Huevo Frito", 14.5, 10.0, 19.5)
   end
   
    describe "Debe almacenar los datos" do
     it "Debe tener nombre" do
-      expect(@al1.name).to_not eq(nil) 
+      expect(@al1.nombre).to_not eq(nil) 
     end
    it "Debe tener proteinas" do
       expect(@al1.proteinas).to_not eq(nil) 
