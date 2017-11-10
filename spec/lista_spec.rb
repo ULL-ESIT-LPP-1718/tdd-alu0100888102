@@ -44,7 +44,7 @@ describe Lista do
     end
     it "Se puede añadir elementos al principio" do
         @l.push_front("Primerisimo punto")
-        expect(@l.back()).to eq("Primerisimo punto")
+        expect(@l.front()).to eq("Primerisimo punto")
     end
     it "Se puede acceder a un elemento i" do
         expect(@l.element(3)).to eq("Tercer punto")
@@ -53,7 +53,7 @@ describe Lista do
         expect(@l.element(5)).to eq("Quinto punto")
     end
     it "Se puede añadir un elemento en la posición i" do
-        @l.set_element("Segundo y medio punto")
+        @l.set_element("Segundo y medio punto", 3)
         expect(@l.element(2)).to eq("Segundo punto")
         expect(@l.element(3)).to eq("Segundo y medio punto")
         expect(@l.element(4)).to eq("Tercer punto")
@@ -67,9 +67,9 @@ describe Lista do
         expect(@l.back()).to eq("Septimo punto")
     end
     it "Se puede eliminar el elemento i" do
-        expect(@l.pop_element(3)).to eq("Segundo y medio punto")
-        expect(@l.element(3)).to eq("Tercer punto")
-        expect(@l.element(2)).to eq("Segundo punto")
+        expect(@l.pop_element(2)).to eq("Segundo y medio punto")
+        expect(@l.element(2)).to eq("Tercer punto")
+        expect(@l.element(1)).to eq("Segundo punto")
     end
     
     it "Tiene salida de texto" do
@@ -123,15 +123,12 @@ describe GrupoAlimentos do
   
   describe "Debe tener una clasificación" do
     it "Debe tener grupo" do
-      expect(@huevosLacteosHelados.tipo).to eq("Huevos, Lacteos y Helados")
+      expect(@lacteos.grupo).to_not eq(nil)
     end
   end
   
   
   describe "Comprobamos la jerarqia" do
-    it "Debe tener grupo" do
-      expect(@lacteos.grupo).to_not eq(nil)
-    end
     it "Es hija de Alimentos" do
       expect(@lacteos.is_a?Lista).to eq(true)
     end
@@ -139,16 +136,10 @@ describe GrupoAlimentos do
       expect(@lacteos.is_a?Object).to eq(true)
     end
     it"Es una instancia de Piramide" do
-      expect(@lacteos.instance_of?GrupoAlimentos).to eq(true)
+      expect(@lacteos.is_a?GrupoAlimentos).to eq(true)
     end
     it"Es una instancia de Alimentos" do
-      expect(@lacteos.instance_of?Lista).to eq(true)
-    end
-    it"Es una instancia de Class" do
-      expect(@lacteos.instance_of?Class).to eq(true)
-    end
-    it"Es una instancia de Object" do
-      expect(@lacteos.instance_of?Object).to eq(true)
+      expect(@lacteos.is_a?Lista).to eq(true)
     end
   end  
     
