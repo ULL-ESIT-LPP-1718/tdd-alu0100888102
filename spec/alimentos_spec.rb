@@ -45,6 +45,5 @@ describe Alimentos do
       expect(@al1.valorEnergetico).to eq(14.1*4 + 10.0*4 + 19.5*9)
     end
   end
-  
-  
+
 end
