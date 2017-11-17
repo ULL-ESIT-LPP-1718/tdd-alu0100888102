@@ -124,6 +124,5 @@ class GrupoAlimentos < Lista
     attr_reader :grupo
     
     def initialize(var)
-        @grupo = var
     end
 end
