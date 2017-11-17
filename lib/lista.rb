@@ -1,4 +1,6 @@
 class Lista
+    include Enumerable
+    
     attr_reader :head, :tail
     Node = Struct.new(:datos, :sig, :prev)
     
@@ -118,11 +120,12 @@ class Lista
         toprint += "}"
         return toprint
     end
-end
-
-class GrupoAlimentos < Lista
-    attr_reader :grupo
     
-    def initialize(var)
+    def each
+        node = @head
+        while(node != nil) do
+            yield node.datos
+            node = node.sig
+        end
     end
 end

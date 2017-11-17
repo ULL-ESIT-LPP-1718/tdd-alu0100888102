@@ -78,4 +78,15 @@ describe Lista do
   
   end
   
+  describe "Probamos el modulo Enumerable" do
+    it "Definimos el each" do
+      cadena = ""
+      @l.each do |nodo|
+        cadena += "Chocolate " + nodo +"\n"
+      end
+      expect(cadena).to eq("Chocolate Primer punto\nChocolate Segundo punto\nChocolate Tercer punto\nChocolate Cuarto punto\nChocolate Quinto punto\nChocolate Sexto punto\nChocolate Septimo punto\n")
+    end
+    
+  end
+  
 end
