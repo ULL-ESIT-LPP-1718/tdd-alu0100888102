@@ -5,5 +5,7 @@ git_source(:github) {|repo_name| "https://github.com/ULL-ESIT-LPP-1718/tdd-alu01
 gem 'rspec'
 gem 'guard'
 gem 'guard-shell'
+gem 'yard'
+
 
 gemspec
