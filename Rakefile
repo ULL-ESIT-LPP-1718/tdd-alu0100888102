@@ -14,3 +14,9 @@ task :doc do
   sh "rspec -I. spec/alimentos_spec.rb --format documentation"
   sh "rspec -I. spec/lista_spec.rb --format documentation"
 end
+
+desc "Hacer un push a nutrientes y a origin"
+task :push do
+  sh "git push origin master"
+  sh "git push nutrientes master"
+end
