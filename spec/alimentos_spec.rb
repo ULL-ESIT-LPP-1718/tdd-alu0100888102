@@ -1,7 +1,7 @@
 require "lib/alimentos"
 
 describe Alimentos do
-  
+
   before :all do
     conc11 = [6.7, 6.5, 6.8, 6.9, 7.0, 7.1, 6.9, 6.9, 6.9, 6.7, 6.9, 7.3, 7.0, 7.0, 7.2, 7.1, 6.8, 7.2, 7.3, 7.0, 6.8, 6.7, 6.8, 6.7, 6.9]
     conc12 = [6.1, 6.6, 6.3, 6.3, 6.1, 6.9, 6.8, 6.5, 6.4, 6.9, 6.8, 6.5, 6.3, 6.2, 6.7, 6.2, 5.9, 5.8, 5.8, 5.8, 5.8, 5.8, 5.9, 6.2, 6.4]
@@ -25,6 +25,15 @@ describe Alimentos do
     
     @glucosa1 = Alimentos.new("Glucosa", 14.1, 10.0, 19.5, conc14)
     @glucosa2 = Alimentos.new("Glucosa", 14.1, 10.0, 19.5, conc24)
+    
+    glucosa = [@glucosa1, @glucosa2]
+    compota = [@compota1, @compota2]
+    yogurt = [@yogurt1, @yogurt2]
+    chocolate = [@chocolate1, @chocolate2]
+      
+    @alimentos = [glucosa, compota, yogurt, chocolate]
+    @indices = []
+    
   end
   
    describe "Debe almacenar los datos" do
@@ -75,20 +84,20 @@ describe Alimentos do
     alIgual = Alimentos.new("Otro Huevo Frito", 14.1, 10.0, 19.5, conc)
     
     it "Debe ser mayor" do
-      expect(@al1 > alMayor).to eq(false)
-      expect(@al1 > alMenor).to eq(true)
-      expect(@al1 > alIgual).to eq(false)
+      expect(@compota1 > alMayor).to eq(false)
+      expect(@compota1 > alMenor).to eq(true)
+      expect(@compota1 > alIgual).to eq(false)
     end
     it "Debe ser menor" do
-      expect(@al1 < alMayor).to eq(true)
-      expect(@al1 < alMenor).to eq(false)
-      expect(@al1 < alIgual).to eq(false)
+      expect(@compota1 < alMayor).to eq(true)
+      expect(@compota1 < alMenor).to eq(false)
+      expect(@compota1 < alIgual).to eq(false)
     end
     
     it "Debe ser igual" do
-      expect(@al1 == alMayor).to eq(false)
-      expect(@al1 == alMenor).to eq(false)
-      expect(@al1 == alIgual).to eq(true)
+      expect(@compota1 == alMayor).to eq(false)
+      expect(@compota1 == alMenor).to eq(false)
+      expect(@compota1 == alIgual).to eq(true)
     end
     
   end
@@ -98,47 +107,47 @@ describe Alimentos do
       expect(@compota1.concentraciones).to_not eq(nil)
     end
     
-      array glucosa = [@glucosa1.aibc, @glucosa2.aibc]
-      array compota = [@compota1.aibc, @compota2.aibc]
-      array yogurt = [@yogurt1.aibc, @yogurt2.aibc]
-      array chocolate = [@chocolate1.aibc, @chocolate2.aibc]
-      
-      array alimentos = [glucosa, compota, yogurt, chocolate]
-    
     it "debe calcularese el AIBC" do
-      expect(alimentos[0][0]).to eq(255.99999999999997)
-      expect(alimentos[1][0]).to eq(27.49999999999999)
-      expect(alimentos[2][0]).to eq(21.750000000000046)
-      expect(alimentos[3][0]).to eq(7.500000000000005)
+      @alimentos.map! { |x|
+        x.map{ |e|
+          e.aibc(5)
+        }
+      }
+
+      expect(@alimentos[0][0]).to eq(255.99999999999997)
+      expect(@alimentos[1][0]).to eq(27.49999999999999)
+      expect(@alimentos[2][0]).to eq(21.750000000000046)
+      expect(@alimentos[3][0]).to eq(7.500000000000005)
       
-      expect(alimentos[0][1]).to eq(186.50000000000003)
-      expect(alimentos[1][1]).to eq(183.25)
-      expect(alimentos[2][1]).to eq(138.49999999999997)
-      expect(alimentos[3][1]).to eq(44.25000000000004)
+      expect(@alimentos[0][1]).to eq(186.50000000000003)
+      expect(@alimentos[1][1]).to eq(183.25)
+      expect(@alimentos[2][1]).to eq(138.49999999999997)
+      expect(@alimentos[3][1]).to eq(44.25000000000004)
     end
     
     it "debe calcularse el indice glucémico de los individuos" do
       
-      alimentos.map do |alimento|
+      referencia = @alimentos[0]
+      @alimentos.map! do |alimento|
         alimento.map.with_index do |x, i|
-          (x / alimento[0][i]) *100
+          (x / referencia[i]) * 100
         end
       end
+        
+      expect(@alimentos[0][0]).to eq(100)
+      expect(@alimentos[1][0]).to eq(10.742187499999996)
+      expect(@alimentos[2][0]).to eq(8.49609375000002)
+      expect(@alimentos[3][0]).to eq(2.929687500000002)
       
-      expect(alimentos[0][0]).to eq(100)
-      expect(alimentos[1][0]).to eq(10.7421875)
-      expect(alimentos[2][0]).to eq(8.49609375)
-      expect(alimentos[3][0]).to eq(2.9296875)
-      
-      expect(alimentos[0][1]).to eq(100)
-      expect(alimentos[1][1]).to eq(98.2573726)
-      expect(alimentos[2][1]).to eq(74.2627345)
-      expect(alimentos[3][1]).to eq(23.7265415)
+      expect(@alimentos[0][1]).to eq(100)
+      expect(@alimentos[1][1]).to eq(98.25737265415549)
+      expect(@alimentos[2][1]).to eq(74.26273458445037)
+      expect(@alimentos[3][1]).to eq(23.726541554959805)
       
     end
   
     it "Calculamos el indice glucémico de los elementos" do
-      alimentos.map do |alimento|
+      @alimentos.map! do |alimento|
         n = alimento.length()
         t = alimento.reduce do |sum, x|
           sum + x
@@ -146,10 +155,10 @@ describe Alimentos do
         t / n
       end
       
-      expect(alimentos[0]).to eq(100)
-      expect(alimentos[1]).to eq(54.49978)
-      expect(alimentos[2]).to eq(41.376836)
-      expect(alimentos[3]).to eq(13.328114)
+      expect(@alimentos[0]).to eq(100)
+      expect(@alimentos[1]).to eq(54.499780077077745)
+      expect(@alimentos[2]).to eq(41.37941416722519)
+      expect(@alimentos[3]).to eq(13.328114527479904)
     end
   end
 

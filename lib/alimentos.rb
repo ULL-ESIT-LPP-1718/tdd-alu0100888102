@@ -48,6 +48,17 @@ class Alimentos
         valorEnergetico <=> another.valorEnergetico
     end
     
+    def aibc (deltaTime)
+        temp = @concentraciones.map.with_index { |element, index|
+            if (index == 0) then
+                next 0
+            end
+            (((element.to_f - @concentraciones[0]) + (@concentraciones[index - 1] - @concentraciones[0]))/ 2) * deltaTime
+        }
+        temp.reduce(:+)
+    end
+    
+    
 end
 
 # Esta clase represnta alimentos que pertenecen a un grupo
@@ -63,8 +74,8 @@ class GrupoAlimento < Alimentos
     # @param pr [float] cantidad de proteinas en el alimento
     # @param gl [float] cantidad de glucidos en el alimento
     # @param li [float] cantidad de lipidos en el alimento
-    def initialize(gr, no, pr, gl, li)
-        super(no, pr, gl, li)
+    def initialize(gr, no, pr, gl, li, co)
+        super(no, pr, gl, li, co)
         @grupo = gr
     end
     
