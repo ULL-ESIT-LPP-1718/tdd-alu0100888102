@@ -13,16 +13,22 @@ class Alimentos
     # @return [lipidos] cantidad de lipidos en el alimento
     attr_reader :nombre, :proteinas, :glucidos, :lipidos
     
+    # Accessors
+    # @return [concentraciones] array con las concentraciones de glucosa del alimento en un individuo
+    attr_accessor :concentraciones
+    
     # Crea el alimento
     # @param no [String] nombre del alimento
     # @param pr [float] cantidad de proteinas en el alimento
     # @param gl [float] cantidad de glucidos en el alimento
     # @param li [float] cantidad de lipidos en el alimento
-    def initialize(no, pr, gl, li)
+    # @param co [array] concentraciones del alimento
+    def initialize(no, pr, gl, li, co)
         @nombre = no
         @proteinas = pr * 1.0
         @glucidos = gl * 1.0
         @lipidos = li * 1.0
+        @concentraciones = co
     end
     
     # Devuelve el aliemnto formateado como una cadena de texto
