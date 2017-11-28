@@ -1,7 +1,7 @@
-require "lib/alimentos"
+require "spec_helper"
 require 'benchmark'
 
-describe Alimentos do
+RSpec.describe Alimentos do
 
   before :all do
     conc11 = [6.7, 6.5, 6.8, 6.9, 7.0, 7.1, 6.9, 6.9, 6.9, 6.7, 6.9, 7.3, 7.0, 7.0, 7.2, 7.1, 6.8, 7.2, 7.3, 7.0, 6.8, 6.7, 6.8, 6.7, 6.9]
@@ -165,7 +165,7 @@ describe Alimentos do
 
 end
 
-describe GrupoAlimento do
+RSpec.describe GrupoAlimento do
   
   before :all do
     conc = [6.7, 6.5, 6.8, 6.9, 7.0, 7.1, 6.9, 6.9, 6.9, 6.7, 6.9, 7.3, 7.0, 7.0, 7.2, 7.1, 6.8, 7.2, 7.3, 7.0, 6.8, 6.7, 6.8, 6.7, 6.9]
