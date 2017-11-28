@@ -1,7 +1,6 @@
-require "lib/lista"
-require "lib/alimentos"
+require "spec_helper"
 
-describe Lista do
+RSpec.describe Lista do
   
   before :all do
       @l = Lista.new("Primer punto")
