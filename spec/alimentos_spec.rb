@@ -202,5 +202,30 @@ describe GrupoAlimento do
     
   end
 
+  describe "Comprobamos los ejercicios de la práctica 10" do
+    array = [ GrupoAlimento.new("Huevos, lácteos y helados", "Huevo frito", 14.1, 0.0, 19.5, nil),
+              GrupoAlimento.new("Huevos, lácteos y helados", "Leche vaca", 3.3, 4.8, 3.2, nil),
+              GrupoAlimento.new("Huevos, lácteos y helados", "Yogurt", 3.8, 4.9, 3.8, nil),
+              GrupoAlimento.new("Carnes y derivados", "Cerdo", 21.5, 0.0, 6.3, nil),
+              GrupoAlimento.new("Carnes y derivados", "Ternera", 21.1, 0.0, 3.1, nil),
+              GrupoAlimento.new("Carnes y derivados", "Pollo", 20.6, 0.0, 5.6, nil),
+              GrupoAlimento.new("Pescados y mariscos", "Bacalao", 17.7, 0.0, 0.4, nil),
+              GrupoAlimento.new("Pescados y mariscos", "Atún", 21.5, 0.0, 15.5, nil),
+              GrupoAlimento.new("Pescados y mariscos", "Salmon", 19.9, 0.0, 13.6, nil),
+              GrupoAlimento.new("Alimentos grasos", "Aceite de oliva", 0.0, 0.2, 99.6, nil),
+              GrupoAlimento.new("Alimentos grasos", "Mantequilla", 0.7, 0.0, 83.2, nil),
+              GrupoAlimento.new("Alimentos grasos", "Chocolate", 5.3, 47, 30, nil),
+              GrupoAlimento.new("Alimentos ricos en carbohidratos", "Azucar", 0.0, 99.8, 0.0, nil),
+              GrupoAlimento.new("Alimentos ricos en carbohidratos", "Arroz", 6.8, 77.7, 0.6, nil),
+              GrupoAlimento.new("Alimentos ricos en carbohidratos", "Lentejas", 23.5, 52.0, 1.4, nil),
+              GrupoAlimento.new("Alimentos ricos en carbohidratos", "Papas", 2.0, 15.4, 0.1, nil),
+              GrupoAlimento.new("Verduras y hortalizas", "Tomate", 1.0, 3.5, 0.2, nil),
+              GrupoAlimento.new("Verduras y hortalizas", "Cebolla", 1.3, 5.8, 0.3, nil),
+              GrupoAlimento.new("Verduras y hortalizas", "Calabaza", 1.1, 4.8, 0.1, nil),
+              GrupoAlimento.new("Frutas", "Manzana", 0.3, 12.4, 0.4, nil),
+              GrupoAlimento.new("Frutas", "Platano", 1.2, 21.4, 0.2, nil),
+              GrupoAlimento.new("Frutas", "Pera", 0.5, 12.7, 0.3, nil)]
+  
+  end
 
 end
