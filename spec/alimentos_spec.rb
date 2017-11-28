@@ -1,4 +1,5 @@
 require "lib/alimentos"
+require 'benchmark'
 
 describe Alimentos do
 
@@ -252,45 +253,54 @@ describe GrupoAlimento do
     it "Ordenamos con un bucle for" do
       
       temp = [];
-      for alimento in array 
-        if(temp.length == 0) then
-          temp << alimento
-        else
-          for i in 0..temp.length
-            if(temp[i] > alimento) then
-              temp.insert()
-            end
-            if(temp.last < alimento) then
-              temp << alimento
+      forTime = Benchmark.measure {
+        for alimento in array 
+          if(temp.length == 0) then
+            temp << alimento
+          else
+            for i in 0..temp.length
+              if(temp[i] > alimento) then
+                temp.insert(i, alimento)
+                break
+              end
+              if(temp.last < alimento) then
+                temp << alimento
+              end
             end
           end
         end
-      end
+      }
       
       temp.each.with_index do |a, index|
         expect(a).to eq(ordenado[index])
       end
+      
+      print "El bucle for tarda #{forTime} segundos\n"
       
     end
     
     it "Ordenamos con un bucle each" do
       
       temp = [];
-      array.each.with_index do |alimento, index| 
-        if(temp.length == 0) then
-          temp << alimento
-        else
-          for i in 0..temp.length
-            if(temp[i] > alimento) then
-              temp.insert()
-              break
-            end
-            if(temp.last < alimento) then
-              temp << alimento
+      eachTime = Benchmark.measure {
+        array.each do |alimento| 
+          if(temp.length == 0) then
+            temp << alimento
+          else
+            for i in 0..temp.length
+              if(temp[i] > alimento) then
+                temp.insert(i, alimento)
+                break
+              end
+              if(temp.last < alimento) then
+                temp << alimento
+              end
             end
           end
         end
-      end
+      }
+      
+      print "El bucle each tarda #{eachTime} segundos\n"
       
       temp.each.with_index do |a, index|
         expect(a).to eq(ordenado[index])
@@ -300,7 +310,10 @@ describe GrupoAlimento do
     
     it "Ordenamos con un sort" do
       
-      temp = array.sort
+      temp = []
+      sortTime = Benchmark.measure { temp = array.sort }
+      
+      print "El sort tarda #{sortTime} segundos\n"
       
       temp.each.with_index do |a, index|
         expect(a).to eq(ordenado[index])
