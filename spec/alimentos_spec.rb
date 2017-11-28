@@ -225,7 +225,89 @@ describe GrupoAlimento do
               GrupoAlimento.new("Frutas", "Manzana", 0.3, 12.4, 0.4, nil),
               GrupoAlimento.new("Frutas", "Platano", 1.2, 21.4, 0.2, nil),
               GrupoAlimento.new("Frutas", "Pera", 0.5, 12.7, 0.3, nil)]
+              
+    ordenado = [array[16],
+                array[18],
+                array[17],
+                array[19],
+                array[21],
+                array[1],
+                array[2],
+                array[15],
+                array[6],
+                array[20],
+                array[4],
+                array[5],
+                array[3],
+                array[8],
+                array[7],
+                array[0],
+                array[14],
+                array[13],
+                array[12],
+                array[11],
+                array[10],
+                array[9]]
   
+    it "Ordenamos con un bucle for" do
+      
+      temp = [];
+      for alimento in array 
+        if(temp.length == 0) then
+          temp << alimento
+        else
+          for i in 0..temp.length
+            if(temp[i] > alimento) then
+              temp.insert()
+            end
+            if(temp.last < alimento) then
+              temp << alimento
+            end
+          end
+        end
+      end
+      
+      temp.each.with_index do |a, index|
+        expect(a).to eq(ordenado[index])
+      end
+      
+    end
+    
+    it "Ordenamos con un bucle each" do
+      
+      temp = [];
+      array.each.with_index do |alimento, index| 
+        if(temp.length == 0) then
+          temp << alimento
+        else
+          for i in 0..temp.length
+            if(temp[i] > alimento) then
+              temp.insert()
+              break
+            end
+            if(temp.last < alimento) then
+              temp << alimento
+            end
+          end
+        end
+      end
+      
+      temp.each.with_index do |a, index|
+        expect(a).to eq(ordenado[index])
+      end
+      
+    end
+    
+    it "Ordenamos con un sort" do
+      
+      temp = array.sort
+      
+      temp.each.with_index do |a, index|
+        expect(a).to eq(ordenado[index])
+      end
+      
+    end
+    
   end
 
 end
