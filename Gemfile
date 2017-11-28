@@ -6,6 +6,7 @@ gem 'rspec'
 gem 'guard'
 gem 'guard-shell'
 gem 'yard'
+gem 'coveralls'
 
 
 gemspec
